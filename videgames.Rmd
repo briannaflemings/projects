@@ -1,0 +1,43 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+library(tidyverse)
+vg_path <- "https://raw.githubusercontent.com/reisanar/datasets/master/video_game_sales.csv"
+vg_sales <- read_csv(vg_path)
+glimpse(vg_sales)
+
+
+vg_sales
+
+```
+
+```{r}
+filter(vg_sales, Year=="2008")
+```
+
+```{r}
+filter(vg_sales, Year=="2008", Global_Sales >= 10)
+```
+```{r}
+filter(vg_sales, Name=="FIFA Soccer 08")
+```
+
+```{r}
+mutate(vg_sales, Total = NA_Sales + EU_Sales + JP_Sales + Other_Sales)
+```
+```{r}
+arrange(vg_sales, desc(Global_Sales))
+```
+
+
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file).
